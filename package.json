@@ -1,0 +1,14 @@
+{
+  "name": "zeroapi-wrapper",
+  "version": "1.0.1",
+  "description": "Api wrapper for Zero Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ZeroApi",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}

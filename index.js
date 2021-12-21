@@ -1,7 +1,6 @@
 const fetch = require('node-fetch')
 // Auth Client Section
 class AuthClient {
-
     constructor({ token }) {
         if (!token) throw new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide An Apikey To Use ZeroApi Wrapper\x1b[0m")
         this.token = token;

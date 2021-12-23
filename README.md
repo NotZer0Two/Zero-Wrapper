@@ -1,11 +1,11 @@
 <div align="center">
   <h1>ZeroApi Wrapper</h1>
   <p>
-    <a href="https://www.npmjs.com/package/popcat-wrapper"><img src="https://img.shields.io/npm/v/zeroapi-wrapper?maxAge=3600" alt="NPM version" /></a>
-    <a href="https://www.npmjs.com/package/popcat-wrapper"><img src="https://img.shields.io/npm/dt/zeroapi-wrapper?maxAge=3600" alt="NPM downloads" /></a>
+    <a href="https://www.npmjs.com/package/zeroapi-wrapper"><img src="https://img.shields.io/npm/v/zeroapi-wrapper?maxAge=3600" alt="NPM version" /></a>
+    <a href="https://www.npmjs.com/package/zeroapi-wrapper"><img src="https://img.shields.io/npm/dt/zeroapi-wrapper?maxAge=3600" alt="NPM downloads" /></a>
   </p>
   <p>
-    <a href="https://www.npmjs.com/package/popcat-wrapper"><img src="https://nodei.co/npm/zeroapi-wrapper.png?downloads=true&stars=true" alt="NPM Banner"></a>
+    <a href="https://www.npmjs.com/package/zeroapi-wrapper"><img src="https://nodei.co/npm/zeroapi-wrapper.png?downloads=true&stars=true" alt="NPM Banner"></a>
   </p>
 </div>
 

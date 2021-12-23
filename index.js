@@ -1,6 +1,7 @@
 const fetch = require('node-fetch')
 // Auth Client Section
 class AuthClient {
+
     constructor({ token }) {
         if (!token) throw new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide An Apikey To Use ZeroApi Wrapper\x1b[0m")
         this.token = token;
@@ -862,6 +863,39 @@ class AuthClient {
         if (!text1) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide text1\x1b[0m")
         if (!text1.text2) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide text2\x1b[0m")
         let image2 = await fetch(`https://api.notzerotwo.ml/image/soldiersociety?api=${this.token}&text=${JSON.stringify(text1.text1).replace(/['"]+/g, '')}&text1=${JSON.stringify(text1.text2).replace(/['"]+/g, '')}`)
+        let json = await image2.buffer()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async rankcard(name, discriminator, currentXP, fullXP, level, rank, avatar) {
+        if (!name) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide a name\x1b[0m")
+        if (!name.discriminator) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide discriminator\x1b[0m")
+        if (!name.currentXP) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide CurrentXP\x1b[0m")
+        if(!name.fullXP) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide FullXP\x1b[0m")
+        if(!name.level) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide Level\x1b[0m")
+        if(!name.rank) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide Rank\x1b[0m")
+        if(!name.avatar) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide Avatar\x1b[0m")
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/rankcard?api=${this.token}&name=${JSON.stringify(name.name).replace(/['"]+/g, '')}&discriminator=${JSON.stringify(name.discriminator).replace(/['"]+/g, '')}&currentXP=${JSON.stringify(name.currentXP).replace(/['"]+/g, '')}&fullXP=${JSON.stringify(name.fullXP).replace(/['"]+/g, '')}&level=${JSON.stringify(name.level).replace(/['"]+/g, '')}&rank=${JSON.stringify(name.rank).replace(/['"]+/g, '')}&avatar=${JSON.stringify(name.avatar).replace(/['"]+/g, '')}`)
+        let json = await image2.buffer()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async gigachad(image, type) {
+        const check = ["normal", "god"]
+        if (!image) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide a image\x1b[0m")
+        if (!image.type) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide a type between [normal, god]\x1b[0m")
+
+        //controlla se quello scritto e contenuto nell array
+        if (!check.includes(image.type)) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide a type between [normal, god]\x1b[0m")
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/gigachad?api=${this.token}&image=${JSON.stringify(image.image).replace(/['"]+/g, '')}&type=${JSON.stringify(image.type).replace(/['"]+/g, '')}`)
         let json = await image2.buffer()
 
         if (json.error) {

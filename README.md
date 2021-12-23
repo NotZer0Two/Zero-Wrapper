@@ -102,6 +102,7 @@ Note: This method applies for all image section endpoint
 - why error close my code saying "[ZeroApi] Error: "The error" " (**This is cause of an error that can be yours or of the api Open a issues for that**)
 - there are some apikey for testing it? (**No and we are not thinking to add it**)
 - There is a rate limit system? (**Yes**)
+- where i can find all the endpoint? (**Here: https://github.com/ZeroRaidStudios/api.notzerotwo.ml**)
 
 ## Support 
 Open a issues if something for the wrapper make an issues here

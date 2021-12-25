@@ -183,6 +183,16 @@ class AuthClient {
 
         return json
     }
+    async cryptoalert() {
+        let image = await fetch(`https://api.notzerotwo.ml/data/cryptoalert?api=${this.token}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
     // Finish data section starting fun section
     async _8ball(question) {
         if (!question) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Question to ask\x1b[0m")
@@ -896,6 +906,44 @@ class AuthClient {
         //controlla se quello scritto e contenuto nell array
         if (!check.includes(image.type)) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide a type between [normal, god]\x1b[0m")
         let image2 = await fetch(`https://api.notzerotwo.ml/image/gigachad?api=${this.token}&image=${JSON.stringify(image.image).replace(/['"]+/g, '')}&type=${JSON.stringify(image.type).replace(/['"]+/g, '')}`)
+        let json = await image2.buffer()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async leavecard(avatar, guildname, name, discriminator, counter) {
+        if (!avatar) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A avatar\x1b[0m")
+        if (!avatar.guildname) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A GuildName\x1b[0m")
+        if (!avatar.name) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A name\x1b[0m")
+        if (!avatar.discriminator) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A discriminator\x1b[0m")
+        if (!avatar.counter) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A counter\x1b[0m")    
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/leavecard?api=${this.token}&avatar=${JSON.stringify(avatar.avatar).replace(/['"]+/g, '')}&guildname=${JSON.stringify(avatar.guildname).replace(/['"]+/g, '')}&name=${JSON.stringify(avatar.name).replace(/['"]+/g, '')}&discriminator=${JSON.stringify(avatar.discriminator).replace(/['"]+/g, '')}&counter=${JSON.stringify(avatar.counter).replace(/['"]+/g, '')}`)
+        let json = await image2.buffer()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async girlandboytalk(text, text1) {
+        if (!text) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A text\x1b[0m")
+        if (!text.text1) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A text1\x1b[0m")
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/girlandboytalk?api=${this.token}&text=${JSON.stringify(text.text).replace(/['"]+/g, '')}&text1=${JSON.stringify(text.text1).replace(/['"]+/g, '')}`)
+        let json = await image2.buffer()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async whathow(image) {
+        if (!image) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A image\x1b[0m")
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/whathow?api=${this.token}&image=${JSON.stringify(image.image).replace(/['"]+/g, '')}`)
         let json = await image2.buffer()
 
         if (json.error) {

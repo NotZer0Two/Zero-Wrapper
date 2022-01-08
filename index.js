@@ -193,6 +193,38 @@ class AuthClient {
 
         return json
     }
+    async lyrics(title) {
+        if (!title) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A title\x1b[0m")
+        let image = await fetch(`https://api.notzerotwo.ml/data/lyrics?api=${this.token}&title=${JSON.stringify(title.title).replace(/['"]+/g, '')}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async axoltl() {
+        let image = await fetch(`https://api.notzerotwo.ml/data/axoltl?api=${this.token}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async dictionary(word, language) {
+        if(!word) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Word\x1b[0m")
+        let image = await fetch(`https://api.notzerotwo.ml/data/dictionary?api=${this.token}&word=${JSON.stringify(word.word).replace(/['"]+/g, '')}&language=${JSON.stringify(word.language || "en").replace(/['"]+/g, '')}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
     // Finish data section starting fun section
     async _8ball(question) {
         if (!question) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Question to ask\x1b[0m")
@@ -228,6 +260,17 @@ class AuthClient {
     async chatbot(message) {
         if (!message) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Message\x1b[0m")
         let image = await fetch(`https://api.notzerotwo.ml/fun/chatbot?api=${this.token}&message=${JSON.stringify(message.message).replace(/['"]+/g, '')}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async waifuchat(message, situation, uuid) {
+        if (!message) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Message\x1b[0m")
+        let image = await fetch(`https://api.notzerotwo.ml/fun/chatbot?api=${this.token}&message=${JSON.stringify(message.message).replace(/['"]+/g, '')}&situation=${JSON.stringify(message.situation || "Zero-Chan is very attractive girlfriend. Zero-Chan loves User.").replace(/['"]+/g, '') }&uuid=${JSON.stringify(message.uuid || "642642727237845041").replace(/['"]+/g, '')}`)
         let json = await image.json()
 
         if (json.error) {
@@ -279,6 +322,26 @@ class AuthClient {
     }
     async wouldyourather() {
         let image = await fetch(`https://api.notzerotwo.ml/fun/wouldyourather?api=${this.token}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async randomemoji() {
+        let image = await fetch(`https://api.notzerotwo.ml/fun/randomemoji?api=${this.token}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async isthatfor() {
+        let image = await fetch(`https://api.notzerotwo.ml/fun/isthatfor?api=${this.token}`)
         let json = await image.json()
 
         if (json.error) {
@@ -461,7 +524,7 @@ class AuthClient {
     }
     async pixelize(image) {
         if (!image) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Image\x1b[0m")
-        let image2 = await fetch(`https://api.notzerotwo.ml/image/jokeoverhead?api=${this.token}&image=${JSON.stringify(image.image).replace(/['"]+/g, '')}`)
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/pixelize?api=${this.token}&image=${JSON.stringify(image.image).replace(/['"]+/g, '')}`)
         let json = await image2.buffer()
 
         if (json.error) {
@@ -472,7 +535,7 @@ class AuthClient {
     }
     async simp(image) {
         if (!image) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Image\x1b[0m")
-        let image2 = await fetch(`https://api.notzerotwo.ml/image/jokeoverhead?api=${this.token}&image=${JSON.stringify(image.image).replace(/['"]+/g, '')}`)
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/simp?api=${this.token}&image=${JSON.stringify(image.image).replace(/['"]+/g, '')}`)
         let json = await image2.buffer()
 
         if (json.error) {
@@ -623,39 +686,6 @@ class AuthClient {
 
         return json
     }
-    async fakecaptcha(text) {
-        if (!text) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Text\x1b[0m")
-        let image = await fetch(`https://api.notzerotwo.ml/image/fakecaptcha?api=${this.token}&text=${JSON.stringify(text.text).replace(/['"]+/g, '')}`)
-        let json = await image.buffer()
-
-        if (json.error) {
-            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
-        }
-
-        return json
-    }
-    async smrt(avatar) {
-        if (!avatar) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A avatar\x1b[0m")
-        let image2 = await fetch(`https://api.notzerotwo.ml/image/smrt?api=${this.token}&avatar=${JSON.stringify(avatar.avatar).replace(/['"]+/g, '')}`)
-        let json = await image2.buffer()
-
-        if (json.error) {
-            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
-        }
-
-        return json
-    }
-    async timout(avatar) {
-        if (!avatar) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A avatar\x1b[0m")
-        let image2 = await fetch(`https://api.notzerotwo.ml/image/timout?api=${this.token}&avatar=${JSON.stringify(avatar.avatar).replace(/['"]+/g, '')}`)
-        let json = await image2.buffer()
-
-        if (json.error) {
-            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
-        }
-
-        return json
-    }
     async shot(avatar) {
         if (!avatar) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A avatar\x1b[0m")
         let image2 = await fetch(`https://api.notzerotwo.ml/image/shot?api=${this.token}&avatar=${JSON.stringify(avatar.avatar).replace(/['"]+/g, '')}`)
@@ -691,7 +721,7 @@ class AuthClient {
     }
     async httpcat(protocol) {
         if (!protocol) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A protocol\x1b[0m")
-        let image2 = await fetch(`https://api.notzerotwo.ml/image/httpcar?api=${this.token}&portocol=${JSON.stringify(protocol.protocol).replace(/['"]+/g, '')}`)
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/httpcat?api=${this.token}&portocol=${JSON.stringify(protocol.protocol).replace(/['"]+/g, '')}`)
         let json = await image2.buffer()
 
         if (json.error) {
@@ -701,6 +731,17 @@ class AuthClient {
         return json
     }
     async robot(text) {
+        if (!text) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A text\x1b[0m")
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/robot?api=${this.token}&name=${JSON.stringify(text.text).replace(/['"]+/g, '')}`)
+        let json = await image2.buffer()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async avatar(text) {
         if (!text) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A text\x1b[0m")
         let image2 = await fetch(`https://api.notzerotwo.ml/image/avatar?api=${this.token}&name=${JSON.stringify(text.text).replace(/['"]+/g, '')}`)
         let json = await image2.buffer()
@@ -749,7 +790,7 @@ class AuthClient {
         return json
     }
     async waifugenerator() {
-        let image2 = await fetch(`https://api.notzerotwo.ml/image/mickeymouse?api=${this.token}`)
+        let image2 = await fetch(`https://api.notzerotwo.ml/image/waifugenerator?api=${this.token}`)
         let json = await image2.buffer()
 
         if (json.error) {
@@ -977,7 +1018,7 @@ class AuthClient {
     }
     async domain(domain) {
         if (!domain) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Domain\x1b[0m")
-        let image2 = await fetch(`https://api.notzerotwo.ml/security/dangerous?api=${this.token}&domain=${JSON.stringify(domain.domain).replace(/['"]+/g, '')}`)
+        let image2 = await fetch(`https://api.notzerotwo.ml/security/domain?api=${this.token}&domain=${JSON.stringify(domain.domain).replace(/['"]+/g, '')}`)
         let json = await image2.json()
 
         if (json.error) {
@@ -988,7 +1029,7 @@ class AuthClient {
     }
     async stackoverflow(error) {
         if (!error) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide An Error\x1b[0m")
-        let image2 = await fetch(`https://api.notzerotwo.ml/security/dangerous?api=${this.token}&error=${JSON.stringify(error.error).replace(/['"]+/g, '')}`)
+        let image2 = await fetch(`https://api.notzerotwo.ml/security/stackoverflow?api=${this.token}&error=${JSON.stringify(error.error).replace(/['"]+/g, '')}`)
         let json = await image2.json()
 
         if (json.error) {

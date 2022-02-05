@@ -268,9 +268,9 @@ class AuthClient {
 
         return json
     }
-    async waifuchat(message, situation, uuid) {
+    async waifuchat(message, situation, uuid, botname) {
         if (!message) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A Message\x1b[0m")
-        let image = await fetch(`https://api.notzerotwo.ml/fun/chatbot?api=${this.token}&message=${JSON.stringify(message.message).replace(/['"]+/g, '')}&situation=${JSON.stringify(message.situation || "Zero-Chan is very attractive girlfriend. Zero-Chan loves User.").replace(/['"]+/g, '') }&uuid=${JSON.stringify(message.uuid || "642642727237845041").replace(/['"]+/g, '')}`)
+        let image = await fetch(`https://api.notzerotwo.ml/fun/waifuchat?api=${this.token}&message=${JSON.stringify(message.message).replace(/['"]+/g, '')}&situation=${JSON.stringify(message.situation || "Zero-Chan is very attractive girlfriend. Zero-Chan loves User.").replace(/['"]+/g, '') }&uuid=${JSON.stringify(message.uuid || "642642727237845041").replace(/['"]+/g, '')}&botname=${JSON.stringify(message.botname || "Zero-Chan").replace(/['"]+/g, '')}`)
         let json = await image.json()
 
         if (json.error) {
@@ -342,6 +342,38 @@ class AuthClient {
     }
     async isthatfor() {
         let image = await fetch(`https://api.notzerotwo.ml/fun/isthatfor?api=${this.token}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    async animequote() {
+        let image = await fetch(`https://api.notzerotwo.ml/fun/animequote?api=${this.token}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+
+    async excuser() {
+        let image = await fetch(`https://api.notzerotwo.ml/fun/excuser?api=${this.token}`)
+        let json = await image.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+
+    async randomwaifu() {
+        let image = await fetch(`https://api.notzerotwo.ml/fun/randomwaifu?api=${this.token}`)
         let json = await image.json()
 
         if (json.error) {
@@ -1162,6 +1194,30 @@ class AuthClient {
     //Sport Section
     async socceroredictor() {
         let image2 = await fetch(`https://api.notzerotwo.ml/sports/socceroredictor?api=${this.token}`)
+        let json = await image2.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+    //Finish the Sport section started the admin one
+    async delwaifu(uuid) {
+        if (!uuid) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A UUID\x1b[0m")
+        let image2 = await fetch(`https://api.notzerotwo.ml/admin/delwaifu?api=${this.token}&uuid=${JSON.stringify(uuid.uuid).replace(/['"]+/g, '')}`)
+        let json = await image2.json()
+
+        if (json.error) {
+            throw new TypeError(`\x1b[31m[ZeroApi Wrapper] Error: ${json.error}\x1b[0m`)
+        }
+
+        return json
+    }
+
+    async dialogwaifu(uuid) {
+        if (!uuid) return new TypeError("\x1b[31m[ZeroApi Wrapper] Error: Provide A UUID\x1b[0m")
+        let image2 = await fetch(`https://api.notzerotwo.ml/admin/dialogwaifu?api=${this.token}&uuid=${JSON.stringify(uuid.uuid).replace(/['"]+/g, '')}`)
         let json = await image2.json()
 
         if (json.error) {

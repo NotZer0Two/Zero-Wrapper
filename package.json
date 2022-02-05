@@ -1,14 +1,22 @@
 {
   "name": "zeroapi-wrapper",
-  "version": "1.0.1",
-  "description": "Api wrapper for Zero Api",
+  "version": "1.1.0",
+  "description": "Wrapper for ZeroApi that will make the request for you without using anything hard",
   "main": "index.js",
+  "homepage": "https://notzerotwo.ml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotZer0Two/Zero-Wrapper.git"
   },
   "author": "ZeroApi",
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.1"
+  },
+  "bugs": {
+    "url": "https://github.com/NotZer0Two/Zero-Wrapper/issues"
   }
 }
